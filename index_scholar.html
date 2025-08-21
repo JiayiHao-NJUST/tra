@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Visualization Navigation</title>
+    <style>
+        /* 基础样式重置与全局设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px 0;
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 标题样式 */
+        .page-title {
+            color: #2c3e50;
+            text-align: center;
+            margin: 30px 0 50px;
+            font-weight: 700;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+        
+        /* 导航卡片容器 */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        /* 卡片样式 */
+        .nav-card {
+
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+        /* 青年学者卡片 - 蓝色调 */
+        .young-scholars {
+                        background-color: #f9f0ff;
+            border: 1px solid #efdbff;
+        }
+
+        .young-scholars:hover {
+            background-color: #f0e5ff;
+            box-shadow: 0 12px 32px rgba(49, 130, 206, 0.15);
+        }
+
+        .young-scholars .card-link {
+            color: #d12eab;
+        }
+
+        /* 中年学者卡片 - 绿色调 */
+        .middle-scholars {
+            background-color: #f6ffed;
+            border: 1px solid #d9f7be;
+        }
+
+        .middle-scholars:hover {
+            background-color: #eaffdf;
+            box-shadow: 0 12px 32px rgba(102, 187, 106, 0.15);
+        }
+
+        .middle-scholars .card-link {
+            color: #52C41A;
+        }
+
+        /* 资深学者卡片 - 紫色调 */
+        .senior-scholars {
+            background-color: #f0f7ff;
+            border: 1px solid #d1e0ff;
+        }
+
+
+
+        .senior-scholars:hover {
+            background-color: #e6f0ff;
+            box-shadow: 0 12px 32px rgba(153, 102, 255, 0.15);
+        }
+
+        .senior-scholars .card-link {
+            color:#165DFF;
+        }
+        
+        /* 图片容器 */
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;       /* 宽度不超过容器宽度 */
+            height: 120%;      /* 高度自动计算，保持原始比例 */
+            object-fit: contain; /* 完整显示图片，可能会有空白区域 */
+            transition: transform 0.5s ease;
+       }
+        
+        .nav-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        /* 卡片内容 */
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .card-desc {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* 按钮样式 */
+        .card-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f6f6f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .card-link:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">The relationship between the methods, topics and the number of papers of various scholars</h1>
+        
+        <div class="nav-grid">
+            <!-- 青年学者分析板块 - 蓝色调 -->
+            <div class="nav-card young-scholars">
+                <div class="card-image">
+                    <img src="./pictures/young scholars.png" alt="Young Scholars Analysis">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Young Scholars Analysis</h2>
+                    <p class="card-desc">The relationship between the methods, topics and the number of papers of young scholars</p>
+                    <a href="Three-dimensional diagram of Young scholars.html" class="card-link">View Visualization</a>
+                </div>
+            </div>
+
+            <!-- 中年学者分析板块 - 绿色调 -->
+            <div class="nav-card middle-scholars">
+                <div class="card-image">
+                    <img src="./pictures/middle-aged scholars.png" alt="Middle-aged Scholars Analysis">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Middle-aged Scholars Analysis</h2>
+                    <p class="card-desc">The relationship between the methods, topics and the number of papers of middle-aged scholars</p>
+                    <a href="Three-dimensional diagram of Middle-aged scholars.html" class="card-link">View Visualization</a>
+                </div>
+            </div>
+
+            <!-- 资深学者分析板块 - 紫色调 -->
+            <div class="nav-card senior-scholars">
+                <div class="card-image">
+                    <img src="./pictures/senior scholars.png" alt="Senior Scholars Analysis">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Senior Scholars Analysis</h2>
+                    <p class="card-desc">The relationship between the methods, topics and the number of papers of senior scholars</p>
+                    <a href="Three-dimensional diagram of Senior scholars.html" class="card-link">View Visualization</a>
+                </div>
+            </div>
+
+
+    
+        </div>
+    </div>
+</body>
+</html>
